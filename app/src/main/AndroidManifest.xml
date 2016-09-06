@@ -4,6 +4,30 @@
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
+    <!-- 开启摄像头 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <!--设置录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 网络状态 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- sd 卡获得写的权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +43,36 @@
             </intent-filter>
         </activity>
         <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".MoveActivity"></activity>
+
+        <activity
+            android:name="com.emokit.sdk.heartrate.FacedetectActivity"
+            android:screenOrientation="portrait"	>
+        </activity>
+        <activity
+            android:name="com.emokit.sdk.senseface.CameraActivity"
+            android:screenOrientation="portrait"	>
+        </activity>
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
+        </service>
+
+
+        <meta-data
+            android:name="EMOKIT_AID"
+            android:value="100649"	/>
+        <meta-data
+            android:name="EMOKIT_KEY"
+            android:value="67225e2887730852f26b5b0fa1050ffc"	/>
+        <meta-data
+            android:name="EMOKIT_RecordTaskAnimation"
+            android:value="1"	/>
+
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Mmg7or9jCgxEPjc3z0NGc3KpLdmhIfGB" />
+
     </application>
 
 </manifest>

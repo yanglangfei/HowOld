@@ -3,7 +3,14 @@ package com.util.ylf.howold;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+
+import com.emokit.sdk.InitListener;
+import com.emokit.sdk.basicinfo.AdvancedInformation;
+import com.emokit.sdk.record.EmotionDetect;
+import com.emokit.sdk.record.EmotionVoiceListener;
+import com.emokit.sdk.util.SDKAppInit;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,6 +22,47 @@ import org.json.JSONObject;
 public class ResultActivity extends Activity{
     private TextView tv_info;
     private String result;
+    private EmotionVoiceListener emotionVoiceListener=new EmotionVoiceListener() {
+        @Override
+        public void onVolumeChanged(int i) {
+            //实时分贝
+            Log.i("111","change:"+i);
+
+        }
+
+        @Override
+        public void onBeginOfSpeech() {
+            //开始说话
+            Log.i("111","begin:");
+
+        }
+
+        @Override
+        public void onEndOfSpeech() {
+            //结束说话
+            Log.i("111","end");
+
+        }
+
+        @Override
+        public void onVoiceResult(String s) {
+            //分析结果
+            Log.i("111","分析:"+s);
+
+
+        }
+    };
+
+    private InitListener initListener=new InitListener() {
+        @Override
+        public void onInit(int i) {
+            //初始化用户信息   用户名      用户名
+            AdvancedInformation pp = AdvancedInformation.getSingleton(ResultActivity.this);
+            SDKAppInit.registerforuid("HowOld",pp.getp().getSimSerial(),null);
+
+        }
+    };
+    private EmotionDetect detect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +73,21 @@ public class ResultActivity extends Activity{
         parseData(result);
     }
 
+
+
+   public  void  onVoiceExpression(View view){
+       //结束监听
+       detect=EmotionDetect.createRecognizer(this, initListener);
+       //启动监听
+       detect.startListening(emotionVoiceListener);
+   }
+
+    public  void  onStopAnsy(View view){
+        detect.stopListening();
+    }
+
     private void parseData(String result)  {
-        //{"face":[{"position":{"mouth_right":{"y":54.173667,"x":75.327219},"mouth_left":
-        // {"y":53.974833,"x":45.427515},"center":{"y":37.666667,"x":58.284024},
-        // "height":45.333333,"width":80.473373,"nose":{"y":42.3915,"x":61.907396},
-        // "eye_left":{"y":29.8155,"x":38.826036},"eye_right":{"y":29.214,"x":82.787278}},
-        // "attribute":{"race":{"value":"Asian","confidence":99.96340000000001},
-        // "gender":{"value":"Male","confidence":99.9917},"smiling":{"value":3.23937},
-        // "age":{"value":19,"range":5}},"tag":"",
-        // "face_id":"67a9996bc2fe5a73586f54020e23af7f"}],
-        // "session_id":"e48efbdfd98d4a76b38dbb27f820fa5b",
-        // "img_height":816,"img_width":460,
-        // "img_id":"9fe0fd4d704a8e56718cce279aff26f3",
-        // "url":null,"response_code":200}
         try {
-            Log.i("111","result:"+result);
             JSONObject object=new JSONObject(result);
             JSONArray array=object.getJSONArray("face");
             for (int i = 0; i <array.length() ; i++) {

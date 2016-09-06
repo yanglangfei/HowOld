@@ -21,7 +21,6 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
-
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
@@ -33,24 +32,11 @@ public class MainActivity extends Activity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String result= (String) msg.obj;
-            //{"face":[{"position":{"mouth_right":{"y":54.173667,"x":75.327219},"mouth_left":
-            // {"y":53.974833,"x":45.427515},"center":{"y":37.666667,"x":58.284024},
-            // "height":45.333333,"width":80.473373,"nose":{"y":42.3915,"x":61.907396},
-            // "eye_left":{"y":29.8155,"x":38.826036},"eye_right":{"y":29.214,"x":82.787278}},
-            // "attribute":{"race":{"value":"Asian","confidence":99.96340000000001},
-            // "gender":{"value":"Male","confidence":99.9917},"smiling":{"value":3.23937},
-            // "age":{"value":19,"range":5}},"tag":"",
-            // "face_id":"67a9996bc2fe5a73586f54020e23af7f"}],
-            // "session_id":"e48efbdfd98d4a76b38dbb27f820fa5b",
-            // "img_height":816,"img_width":460,
-            // "img_id":"9fe0fd4d704a8e56718cce279aff26f3",
-            // "url":null,"response_code":200}
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             intent.putExtra("result", result);
             startActivity(intent);
         }
     };
-    private java.lang.String url="http://apicn.faceplusplus.com/v2/detection/detect";
     private Bitmap bm;
 
     @Override
@@ -86,6 +72,16 @@ public class MainActivity extends Activity {
         });
 
 
+    }
+
+
+    public  void  onToLocation(View view){
+        startActivity(new Intent(this, LocationActivity.class));
+    }
+
+
+    public  void  onToMove(View view){
+        startActivity(new Intent(this,MoveActivity.class));
     }
 
     private void resizePhoto() {
