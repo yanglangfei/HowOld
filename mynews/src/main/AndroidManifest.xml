@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".WelcomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".news.NewsDetail"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".base.Regin"></activity>
+
         <activity
             android:name=".talkmsg.TalkDetail"
             android:configChanges="orientation"
