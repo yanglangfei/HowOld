@@ -27,12 +27,10 @@ import java.util.List;
  * Created by Administrator on 2016/9/7.
  */
 public class LiveList extends Fragment {
+    private static final String GET_VIDEO = "http://tv.sohu.com/api/";
     private RecyclerView live_rv;
     private LiveAdapter adapter;
-
     private View view;
-    private static final String GET_VIDEO = "http://tv.sohu.com/api/";
-
     private List<Video> videos = new ArrayList<>();
 
     @Override
@@ -79,7 +77,7 @@ public class LiveList extends Fragment {
                             String p = object1.getString("p");
                             String t = object1.getString("t");
                             String t1 = object1.getString("t1");
-                            String l=object1.getString("l");
+                            String l = object1.getString("l");
                             Video video = new Video();
                             video.setP(p);
                             video.setT(t);
@@ -116,14 +114,14 @@ public class LiveList extends Fragment {
         live_rv = (RecyclerView) view.findViewById(R.id.live_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         live_rv.setLayoutManager(linearLayoutManager);
-        adapter=new LiveAdapter(videos,getActivity());
+        adapter = new LiveAdapter(videos, getActivity());
         live_rv.setAdapter(adapter);
 
         adapter.setListener(new LiveAdapter.onItemClickListener() {
             @Override
             public void onClickListener(View view, int position) {
-                Intent intent=new Intent(getActivity(), NewsDetail.class);
-                intent.putExtra("url",videos.get(position).getL());
+                Intent intent = new Intent(getActivity(), NewsDetail.class);
+                intent.putExtra("url", videos.get(position).getL());
                 getActivity().startActivity(intent);
             }
         });

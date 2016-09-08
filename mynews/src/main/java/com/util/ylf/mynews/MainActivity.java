@@ -17,12 +17,9 @@ import com.util.ylf.mynews.talkmsg.TalkList;
 
 public class MainActivity extends FragmentActivity {
     private FragmentTabHost tabHost;
-    private  String tabTxt[]={"新闻","直播","话题","我"};
-    private  Class fragments[]={NewsList.class, LiveList.class, TalkList.class, MyTab.class};
-    private  int images[]={R.drawable.tab_news_select,R.drawable.tab_live_select,R.drawable.tab_talk_select,R.drawable.tab_my_select};
-
-
-
+    private String tabTxt[] = {"新闻", "直播", "话题", "我"};
+    private Class fragments[] = {NewsList.class, LiveList.class, TalkList.class, MyTab.class};
+    private int images[] = {R.drawable.tab_news_select, R.drawable.tab_live_select, R.drawable.tab_talk_select, R.drawable.tab_my_select};
 
 
     @Override
@@ -34,23 +31,23 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initView() {
-        tabHost= (FragmentTabHost) findViewById(android.R.id.tabhost);
+        tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this, getSupportFragmentManager(), R.id.realContent);
 
         for (int i = 0; i < tabTxt.length; i++) {
             TabHost.TabSpec tab = tabHost.newTabSpec(tabTxt[i]).setIndicator(getViews(i));
-            tabHost.addTab(tab,fragments[i],null);
+            tabHost.addTab(tab, fragments[i], null);
         }
 
 
     }
 
     private View getViews(int i) {
-        View view= LayoutInflater.from(this).inflate(R.layout.tab_item,null);
-        ImageView tab_iv= (ImageView) view.findViewById(R.id.tab_iv);
-        TextView tv_tab= (TextView) view.findViewById(R.id.tv_tab);
+        View view = LayoutInflater.from(this).inflate(R.layout.tab_item, null);
+        ImageView tab_iv = (ImageView) view.findViewById(R.id.tab_iv);
+        TextView tv_tab = (TextView) view.findViewById(R.id.tv_tab);
         tv_tab.setText(tabTxt[i]);
-        tab_iv.setBackground(ContextCompat.getDrawable(this,images[i]));
+        tab_iv.setBackground(ContextCompat.getDrawable(this, images[i]));
         return view;
     }
 

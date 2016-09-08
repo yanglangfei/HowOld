@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/ui_time"
+    android:minHeight="200dp"
+    android:minWidth="400dp"
+    android:updatePeriodMillis="860000">
 
-</PreferenceScreen>
+</appwidget-provider>

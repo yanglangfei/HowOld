@@ -24,18 +24,18 @@ public class NewsDetail extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        wv= (WebView) findViewById(R.id.wv);
+        wv = (WebView) findViewById(R.id.wv);
         wv.getSettings().setJavaScriptEnabled(true);
-        iv_finish= (ImageButton) findViewById(R.id.iv_finish);
+        iv_finish = (ImageButton) findViewById(R.id.iv_finish);
         iv_finish.setOnClickListener(this);
-        url=getIntent().getStringExtra("url");
+        url = getIntent().getStringExtra("url");
         wv.loadUrl(url);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case  R.id.iv_finish:
+        switch (v.getId()) {
+            case R.id.iv_finish:
                 this.finish();
                 break;
             default:

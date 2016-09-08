@@ -23,11 +23,11 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.MyAdapter> {
     private final List<Video> videos;
     private final Context context;
 
-    public  onItemClickListener listener;
+    public onItemClickListener listener;
 
     public LiveAdapter(List<Video> videos, Context context) {
-        this.videos=videos;
-        this.context=context;
+        this.videos = videos;
+        this.context = context;
 
     }
 
@@ -37,30 +37,29 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.MyAdapter> {
 
     @Override
     public MyAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_video_item,parent,false);
-        MyAdapter holder=new MyAdapter(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_video_item, parent, false);
+        MyAdapter holder = new MyAdapter(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyAdapter holder, final int position) {
-        View view=holder.itemView;
+        View view = holder.itemView;
         view.setTag(position);
-        ImageView iv_news_logo_video= (ImageView) view.findViewById(R.id.iv_news_logo_video);
-        TextView tv_title_video= (TextView) view.findViewById(R.id.tv_title_video);
-        TextView tv_desc_video= (TextView) view.findViewById(R.id.tv_desc_video);
+        ImageView iv_news_logo_video = (ImageView) view.findViewById(R.id.iv_news_logo_video);
+        TextView tv_title_video = (TextView) view.findViewById(R.id.tv_title_video);
+        TextView tv_desc_video = (TextView) view.findViewById(R.id.tv_desc_video);
         tv_title_video.setText(videos.get(position).getT());
         tv_desc_video.setText(videos.get(position).getT1());
         Glide.with(context).load(videos.get(position).getP()).into(iv_news_logo_video);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listener!=null){
+                if (listener != null) {
                     listener.onClickListener(v, (Integer) v.getTag());
                 }
             }
         });
-
 
 
     }
@@ -70,16 +69,16 @@ public class LiveAdapter extends RecyclerView.Adapter<LiveAdapter.MyAdapter> {
         return videos.size();
     }
 
-    public  class  MyAdapter extends  RecyclerView.ViewHolder{
+    public interface onItemClickListener {
+        void onClickListener(View view, int position);
+    }
+
+    public class MyAdapter extends RecyclerView.ViewHolder {
         View itemView;
 
         public MyAdapter(View itemView) {
             super(itemView);
-            this.itemView=itemView;
+            this.itemView = itemView;
         }
-    }
-
-    public  interface  onItemClickListener{
-        void  onClickListener(View view,int position);
     }
 }

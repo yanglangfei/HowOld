@@ -6,24 +6,22 @@
 
     <include layout="@layout/ui_titlebar"></include>
 
-   <FrameLayout
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:id="@+id/realContent"
-       android:layout_weight="1"
-       >
-   </FrameLayout>
+    <FrameLayout
+        android:id="@+id/realContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
 
     <android.support.v4.app.FragmentTabHost
+        android:id="@android:id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@android:id/tabhost">
+        android:layout_height="60dp">
+
         <FrameLayout
-            android:layout_width="0dp"
             android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            ></FrameLayout>
+            android:layout_weight="1"></FrameLayout>
 
     </android.support.v4.app.FragmentTabHost>
 </LinearLayout>

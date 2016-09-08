@@ -17,17 +17,17 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/9/7.
  */
-public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyHolder>{
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyHolder> {
 
 
     private final List<News> news;
     private final Context context;
 
-    private  onItemClickListener  listener;
+    private onItemClickListener listener;
 
     public NewsAdapter(List<News> news, Context context) {
-        this.news=news;
-        this.context=context;
+        this.news = news;
+        this.context = context;
 
     }
 
@@ -37,25 +37,25 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyHolder>{
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_news_item,parent,false);
-        MyHolder holder=new MyHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ui_news_item, parent, false);
+        MyHolder holder = new MyHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        View v=holder.itemView;
+        View v = holder.itemView;
         v.setTag(position);
-        ImageView iv_news_logo= (ImageView) v.findViewById(R.id.iv_news_logo);
-        TextView tv_title= (TextView) v.findViewById(R.id.tv_title);
-        TextView tv_time= (TextView) v.findViewById(R.id.tv_time);
+        ImageView iv_news_logo = (ImageView) v.findViewById(R.id.iv_news_logo);
+        TextView tv_title = (TextView) v.findViewById(R.id.tv_title);
+        TextView tv_time = (TextView) v.findViewById(R.id.tv_time);
         Glide.with(context).load(news.get(position).getThumbnail_pic_s()).into(iv_news_logo);
         tv_title.setText(news.get(position).getTitle());
-        tv_time.setText(news.get(position).getDate() );
+        tv_time.setText(news.get(position).getDate());
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listener!=null){
+                if (listener != null) {
                     listener.onClick(v, (Integer) v.getTag());
                 }
             }
@@ -67,16 +67,16 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.MyHolder>{
         return news.size();
     }
 
-    public  class  MyHolder extends  RecyclerView.ViewHolder{
+    public interface onItemClickListener {
+        void onClick(View view, int position);
+    }
+
+    public class MyHolder extends RecyclerView.ViewHolder {
         View itemView;
 
         public MyHolder(View itemView) {
             super(itemView);
-            this.itemView=itemView;
+            this.itemView = itemView;
         }
-    }
-
-    public  interface  onItemClickListener{
-        void onClick(View view,int position);
     }
 }

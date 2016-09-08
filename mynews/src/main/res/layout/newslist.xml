@@ -2,125 +2,130 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
-        android:scrollbars="none"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
         <RadioGroup
+            android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/group"
             android:padding="8dp">
 
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="头条" />
+                android:padding="5dp"
+                android:text="头条"
+                android:textSize="12sp" />
 
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="社会" />
+                android:padding="5dp"
+                android:text="社会"
+                android:textSize="12sp" />
 
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="国内" />
+                android:padding="5dp"
+                android:text="国内"
+                android:textSize="12sp" />
 
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="国际" />
+                android:padding="5dp"
+                android:text="国际"
+                android:textSize="12sp" />
+
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
-                android:gravity="center"
                 android:background="@drawable/news_tab_lay"
-                android:text="娱乐" />
+                android:button="@null"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="娱乐"
+                android:textSize="12sp" />
+
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="体育" />
+                android:padding="5dp"
+                android:text="体育"
+                android:textSize="12sp" />
+
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="军事" />
+                android:padding="5dp"
+                android:text="军事"
+                android:textSize="12sp" />
+
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="科技" />
+                android:padding="5dp"
+                android:text="科技"
+                android:textSize="12sp" />
+
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="财经" />
+                android:padding="5dp"
+                android:text="财经"
+                android:textSize="12sp" />
+
             <RadioButton
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:textSize="12sp"
-                android:padding="5dp"
                 android:background="@drawable/news_tab_lay"
+                android:button="@null"
                 android:gravity="center"
-                android:text="时尚" />
+                android:padding="5dp"
+                android:text="时尚"
+                android:textSize="12sp" />
         </RadioGroup>
     </HorizontalScrollView>
-
 
 
     <android.support.v7.widget.RecyclerView

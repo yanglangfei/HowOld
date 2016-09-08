@@ -2,32 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    >
+    android:padding="10dp">
+
     <ImageView
-        android:layout_width="100dp"
-        android:scaleType="fitXY"
         android:id="@+id/iv_news_logo_video"
-        android:layout_height="60dp" />
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY" />
+
     <TextView
-        android:layout_width="wrap_content"
         android:id="@+id/tv_title_video"
-        android:layout_toRightOf="@+id/iv_news_logo_video"
-        android:layout_marginLeft="15dp"
-        android:textSize="15sp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:layout_height="wrap_content"
-        />
-    <TextView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/iv_news_logo_video"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_desc_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_title_video"
         android:layout_below="@+id/tv_title_video"
         android:layout_marginTop="10dp"
-        android:layout_alignLeft="@+id/tv_title_video"
-        android:id="@+id/tv_desc_video"
-        android:maxLines="3"
-        android:layout_height="wrap_content"
-        />
+        android:maxLines="3" />
 
 
 </RelativeLayout>

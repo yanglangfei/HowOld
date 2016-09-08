@@ -46,104 +46,104 @@ public class Video {
 
     private List<MactorEntity> mactor;
 
-    public void setVid(String vid) {
-        this.vid = vid;
-    }
-
-    public void setP(String p) {
-        this.p = p;
-    }
-
-    public void setP1(String p1) {
-        this.p1 = p1;
-    }
-
-    public void setL(String l) {
-        this.l = l;
-    }
-
-    public void setT(String t) {
-        this.t = t;
-    }
-
-    public void setT_(String t_) {
-        this.t_ = t_;
-    }
-
-    public void setT1(String t1) {
-        this.t1 = t1;
-    }
-
-    public void setMtype(List<MtypeEntity> mtype) {
-        this.mtype = mtype;
-    }
-
-    public void setMdirector(List<MdirectorEntity> mdirector) {
-        this.mdirector = mdirector;
-    }
-
-    public void setMactor(List<MactorEntity> mactor) {
-        this.mactor = mactor;
-    }
-
     public String getVid() {
         return vid;
+    }
+
+    public void setVid(String vid) {
+        this.vid = vid;
     }
 
     public String getP() {
         return p;
     }
 
+    public void setP(String p) {
+        this.p = p;
+    }
+
     public String getP1() {
         return p1;
+    }
+
+    public void setP1(String p1) {
+        this.p1 = p1;
     }
 
     public String getL() {
         return l;
     }
 
+    public void setL(String l) {
+        this.l = l;
+    }
+
     public String getT() {
         return t;
+    }
+
+    public void setT(String t) {
+        this.t = t;
     }
 
     public String getT_() {
         return t_;
     }
 
+    public void setT_(String t_) {
+        this.t_ = t_;
+    }
+
     public String getT1() {
         return t1;
+    }
+
+    public void setT1(String t1) {
+        this.t1 = t1;
     }
 
     public List<MtypeEntity> getMtype() {
         return mtype;
     }
 
+    public void setMtype(List<MtypeEntity> mtype) {
+        this.mtype = mtype;
+    }
+
     public List<MdirectorEntity> getMdirector() {
         return mdirector;
+    }
+
+    public void setMdirector(List<MdirectorEntity> mdirector) {
+        this.mdirector = mdirector;
     }
 
     public List<MactorEntity> getMactor() {
         return mactor;
     }
 
+    public void setMactor(List<MactorEntity> mactor) {
+        this.mactor = mactor;
+    }
+
     public static class MtypeEntity {
         private String t;
         private String l;
-
-        public void setT(String t) {
-            this.t = t;
-        }
-
-        public void setL(String l) {
-            this.l = l;
-        }
 
         public String getT() {
             return t;
         }
 
+        public void setT(String t) {
+            this.t = t;
+        }
+
         public String getL() {
             return l;
+        }
+
+        public void setL(String l) {
+            this.l = l;
         }
     }
 
@@ -151,20 +151,20 @@ public class Video {
         private String t;
         private String l;
 
-        public void setT(String t) {
-            this.t = t;
-        }
-
-        public void setL(String l) {
-            this.l = l;
-        }
-
         public String getT() {
             return t;
         }
 
+        public void setT(String t) {
+            this.t = t;
+        }
+
         public String getL() {
             return l;
+        }
+
+        public void setL(String l) {
+            this.l = l;
         }
     }
 
@@ -172,20 +172,20 @@ public class Video {
         private String t;
         private String l;
 
-        public void setT(String t) {
-            this.t = t;
-        }
-
-        public void setL(String l) {
-            this.l = l;
-        }
-
         public String getT() {
             return t;
         }
 
+        public void setT(String t) {
+            this.t = t;
+        }
+
         public String getL() {
             return l;
+        }
+
+        public void setL(String l) {
+            this.l = l;
         }
     }
 }
