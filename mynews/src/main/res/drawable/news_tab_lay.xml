@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item  android:state_checked="true" >
+      <layer-list>
+          <item android:top="23dp">
+              <color android:color="#cc3636"></color>
+          </item>
+      </layer-list>
+    </item>
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:bottom="1dp">
+                <color android:color="@android:color/white"></color>
+            </item>
+        </layer-list>
+
+    </item>
+
+</selector>
