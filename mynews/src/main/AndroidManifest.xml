@@ -3,6 +3,8 @@
     package="com.util.ylf.mynews">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:name=".application.MyApplication"
@@ -14,13 +16,27 @@
         <activity android:name=".WelcomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <category android:name="android.intent.category.BROWSABLE"></category>
+
+                <action android:name="android.intent.action.VIEW"></action>
+                <data android:scheme="myapp"></data>
             </intent-filter>
         </activity>
         <activity android:name=".news.NewsDetail"></activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".base.Regin"></activity>
+        <activity android:name=".my.AppCenter"></activity>
+        <activity android:name=".my.MyInfo"></activity>
+        <activity android:name=".my.Setting"></activity>
+        <activity android:name=".my.SysMessage"></activity>
+        <activity android:name=".my.UpLoadVersion"></activity>
+
+        <service android:name=".server.DownLoadServer"></service>
 
         <activity
             android:name=".talkmsg.TalkDetail"

@@ -86,6 +86,8 @@ public class LiveList extends Fragment {
                             videos.add(video);
                         }
                         adapter.notifyDataSetChanged();
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -108,6 +110,7 @@ public class LiveList extends Fragment {
 
             }
         });
+
     }
 
     private void initView() {
@@ -117,12 +120,14 @@ public class LiveList extends Fragment {
         adapter = new LiveAdapter(videos, getActivity());
         live_rv.setAdapter(adapter);
 
+
         adapter.setListener(new LiveAdapter.onItemClickListener() {
             @Override
             public void onClickListener(View view, int position) {
                 Intent intent = new Intent(getActivity(), NewsDetail.class);
                 intent.putExtra("url", videos.get(position).getL());
                 getActivity().startActivity(intent);
+                view.performClick();
             }
         });
     }
