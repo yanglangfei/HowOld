@@ -1,1 +1,1 @@
-include ':app', ':mynews'
+include ':app', ':mynews', ':DroidPlugin'
