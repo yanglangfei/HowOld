@@ -120,7 +120,6 @@ public class LiveList extends Fragment {
         adapter = new LiveAdapter(videos, getActivity());
         live_rv.setAdapter(adapter);
 
-
         adapter.setListener(new LiveAdapter.onItemClickListener() {
             @Override
             public void onClickListener(View view, int position) {
@@ -128,6 +127,7 @@ public class LiveList extends Fragment {
                 intent.putExtra("url", videos.get(position).getL());
                 getActivity().startActivity(intent);
                 view.performClick();
+
             }
         });
     }
