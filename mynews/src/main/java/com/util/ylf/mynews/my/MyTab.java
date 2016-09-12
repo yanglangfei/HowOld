@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.ns.badgetextview.BadgeTextView;
 import com.util.ylf.mynews.R;
 import com.util.ylf.mynews.server.DownLoadServer;
 
@@ -32,6 +33,7 @@ public class MyTab extends Fragment implements View.OnClickListener {
     private RelativeLayout upload_lay;
     private ImageView my_logo;
     private BroadcastReceiver receiver;
+    private BadgeTextView badgeTextView;
 
 
     @Nullable
@@ -54,6 +56,8 @@ public class MyTab extends Fragment implements View.OnClickListener {
         sysMsg_lay.setOnClickListener(this);
         upload_lay = (RelativeLayout) view.findViewById(R.id.upload_lay);
         upload_lay.setOnClickListener(this);
+        badgeTextView = (BadgeTextView) view.findViewById(R.id.badgeText);
+        badgeTextView.setBadgeCount(1);
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.u);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getActivity().getResources(), bitmap);

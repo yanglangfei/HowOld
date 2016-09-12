@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/DroidPlugin/DroidPlugin.iml" filepath="$PROJECT_DIR$/DroidPlugin/DroidPlugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/HowOld.iml" filepath="$PROJECT_DIR$/HowOld.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/badgetextview/badgetextview.iml" filepath="$PROJECT_DIR$/badgetextview/badgetextview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
       <module fileurl="file://$PROJECT_DIR$/mynews/mynews.iml" filepath="$PROJECT_DIR$/mynews/mynews.iml" />
     </modules>
   </component>

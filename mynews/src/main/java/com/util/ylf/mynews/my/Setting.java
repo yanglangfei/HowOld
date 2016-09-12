@@ -33,12 +33,13 @@ public class Setting extends Activity {
 
     private BroadcastReceiver receiver;
     private String apkPath;
-    private String path;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_setting);
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
     }
 
 
@@ -176,7 +177,9 @@ public class Setting extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(receiver);
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+        }
     }
 
     class InstallApk extends AsyncTask<String, Void, String> {

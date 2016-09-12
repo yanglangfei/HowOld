@@ -28,4 +28,5 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'fm.jiecao:jiecaovideoplayer:4.6.4'
     compile project(':DroidPlugin')
+    compile project(':badgetextview')
 }
