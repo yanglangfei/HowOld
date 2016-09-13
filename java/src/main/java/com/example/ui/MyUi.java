@@ -11,13 +11,12 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.awt.event.InputEvent;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -26,6 +25,7 @@ import javax.swing.JPanel;
 public class MyUi extends JFrame {
 
     private final VideoPanel panelVideo;
+    private boolean isStop;
 
     public MyUi() {
         setTitle("截屏软件");
@@ -37,7 +37,6 @@ public class MyUi extends JFrame {
         //软件永远在栈顶
         setAlwaysOnTop(true);
 
-
         final JPanel panel1 = new JPanel();
         panel1.setSize(100, 100);
 
@@ -48,30 +47,39 @@ public class MyUi extends JFrame {
         JButton button1 = new JButton();
         button1.setText("放映");
 
+        JButton button2 = new JButton();
+        button2.setText("停止");
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+                isStop = !isStop;
 
-                    while (true) {
-                        setVisible(false);
-                        JOptionPane.showMessageDialog(null, "正在处理任务...");
-                        Robot robot = new Robot();
-                        RobotUtils utils = RobotUtils.getInstance();
-                        Icon icon1 = utils.captureFullScreen(robot, "cap", "png", true, 1000 * 5);
+                new Thread() {
+                    @Override
+                    public void run() {
+                        while (!isStop) {
+                            //  setVisible(false);
+                            try {
+                                button.setText("截图...");
+                                button.setEnabled(false);
+                                // JOptionPane.showMessageDialog(null, "正在处理任务...");
+                                Robot robot = new Robot();
+                                RobotUtils utils = RobotUtils.getInstance();
+                                Icon icon1 = utils.captureFullScreen(robot, "cap", "png", true, 1000 * 5);
 
                  /*   utils .openApplication(robot, "notepad");
                     int [] keys={KeyEvent.VK_I,KeyEvent.VK_SPACE,KeyEvent.VK_L,KeyEvent.VK_O,KeyEvent.VK_V,KeyEvent.VK_E, KeyEvent.VK_SPACE,KeyEvent.VK_Y
                     , KeyEvent.VK_O, KeyEvent.VK_U};*/
-                        // utils.doKeyWord(robot, keys,3000);
-                        setVisible(true);
-                        robot.delay(1000 * 5);
+                                // utils.doKeyWord(robot, keys,3000);
+                                //   setVisible(true);
+                                robot.delay(1000 * 5);
+                            } catch (AWTException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
                     }
-
-
-                } catch (AWTException e1) {
-                    e1.printStackTrace();
-                }
+                }.start();
 
 
             }
@@ -85,7 +93,39 @@ public class MyUi extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String p = "D:\\ide\\QPLiveSDK_Andorid_1.0.3\\QupaiLiveSDK\\test\\HowOld\\cap";
+                try {
+
+                    setVisible(false);
+                    Robot robot = new Robot();
+                  /*  robot.keyPress(KeyEvent.VK_WINDOWS);
+                    robot.keyPress(KeyEvent.VK_R);
+                    robot.keyRelease(KeyEvent.VK_R);
+                    robot.keyRelease(KeyEvent.VK_WINDOWS);
+                    robot.delay(10);*/
+                    robot.delay(1000 * 2);
+                    robot.mousePress(InputEvent.BUTTON1_MASK);
+                    robot.delay(1000);
+                    robot.mouseMove(100, 100);
+                    robot.mouseRelease(InputEvent.BUTTON1_MASK);
+
+                  /*  robot.keyPress(KeyEvent.VK_ENTER);
+                    robot.keyRelease(KeyEvent.VK_ENTER);*/
+
+                  /*  Process pro = Runtime.getRuntime().exec("cmd.exe /c start");
+                    robot.mouseMove(533,389);
+                    robot.mousePress(InputEvent.BUTTON1_MASK);
+                    robot.mouseRelease(InputEvent.BUTTON1_MASK);
+                    robot.keyPress(KeyEvent.VK_E);
+                    robot.keyRelease(KeyEvent.VK_E);
+                    robot.keyPress(KeyEvent.VK_C);
+                    robot.keyPress(KeyEvent.VK_C);*/
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                    System.out.print("error");
+                }
+
+
+              /*  String p = "D:\\ide\\QPLiveSDK_Andorid_1.0.3\\QupaiLiveSDK\\test\\HowOld\\cap";
                 File files = new File(p);
                 for (int i = 0; i < files.listFiles().length; i++) {
                     String path = p + "\\" + files.listFiles()[i].getName();
@@ -97,15 +137,26 @@ public class MyUi extends JFrame {
                         e1.printStackTrace();
                         System.out.print("error");
                     }
-                }
+                }*/
 
 
+            }
+        });
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isStop = true;
+                button.setEnabled(true);
+                button.setText("截图");
             }
         });
 
 
         panel1.add(button);
         panel1.add(button1);
+
+        panel1.add(button2);
 
         add(panel1);
 
