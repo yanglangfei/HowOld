@@ -67,6 +67,7 @@ public class LocationActivity extends Activity implements RadarSearchListener, R
                 float direct = bdLocation.getDirection();
                 String dis = bdLocation.getDistrict();
                 String floor = bdLocation.getFloor();
+
                 Log.i("111", "loc:" + pro + "   " + city + "  " + adree + "   " + direct + "   " + dis + "   " + floor);
                 double lat = bdLocation.getLatitude();
                 double lon = bdLocation.getLongitude();

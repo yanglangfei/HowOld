@@ -29,4 +29,5 @@ dependencies {
     compile 'org.xutils:xutils:3.3.36'
     compile files('libs/emokit4.3.2.jar')
     compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/APPayAssistEx.jar')
 }

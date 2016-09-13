@@ -1,51 +1,113 @@
 package com.example.ui;
 
+import com.example.utils.RobotUtils;
+import com.example.video.VideoPanel;
+
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  * Created by Administrator on 2016/9/12.
  */
 public class MyUi extends JFrame {
 
-    public MyUi() {
-        setTitle("qq");
+    private final VideoPanel panelVideo;
 
-        ImageIcon icon = new ImageIcon("");
+    public MyUi() {
+        setTitle("截屏软件");
+
+        final ImageIcon icon = new ImageIcon("");
         Image image = icon.getImage();
         setIconImage(image);
         setBackground(Color.PINK);
+        //软件永远在栈顶
+        setAlwaysOnTop(true);
 
-        JLabel label = new JLabel();
-        label.setText("账号:");
-        label.setForeground(Color.BLUE);
 
-        JTextField field = new JTextField(20);
-        field.setSize(200, 100);
-        JPanel panel1 = new JPanel();
+        final JPanel panel1 = new JPanel();
         panel1.setSize(100, 100);
-        panel1.setLayout(new GridLayout());
-        panel1.add(label);
-        panel1.add(field);
 
-        JPanel panel2 = new JPanel();
-        panel2.setSize(100, 100);
-        panel2.setLayout(new GridLayout());
-        panel2.add(label);
-        panel2.add(field);
 
+        final JButton button = new JButton();
+        button.setText("截屏");
+
+        JButton button1 = new JButton();
+        button1.setText("放映");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    while (true) {
+                        setVisible(false);
+                        JOptionPane.showMessageDialog(null, "正在处理任务...");
+                        Robot robot = new Robot();
+                        RobotUtils utils = RobotUtils.getInstance();
+                        Icon icon1 = utils.captureFullScreen(robot, "cap", "png", true, 1000 * 5);
+
+                 /*   utils .openApplication(robot, "notepad");
+                    int [] keys={KeyEvent.VK_I,KeyEvent.VK_SPACE,KeyEvent.VK_L,KeyEvent.VK_O,KeyEvent.VK_V,KeyEvent.VK_E, KeyEvent.VK_SPACE,KeyEvent.VK_Y
+                    , KeyEvent.VK_O, KeyEvent.VK_U};*/
+                        // utils.doKeyWord(robot, keys,3000);
+                        setVisible(true);
+                        robot.delay(1000 * 5);
+                    }
+
+
+                } catch (AWTException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        panelVideo = new VideoPanel(300, 300);
+        panelVideo.setSize(200, 200);
+        panelVideo.setLocation(20, 200);
+        panelVideo.setBackground(Color.GRAY);
+        add(panelVideo);
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String p = "D:\\ide\\QPLiveSDK_Andorid_1.0.3\\QupaiLiveSDK\\test\\HowOld\\cap";
+                File files = new File(p);
+                for (int i = 0; i < files.listFiles().length; i++) {
+                    String path = p + "\\" + files.listFiles()[i].getName();
+                    System.out.print("path:" + path + "\n");
+                    panelVideo.setPath(path);
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                        System.out.print("error");
+                    }
+                }
+
+
+            }
+        });
+
+
+        panel1.add(button);
+        panel1.add(button1);
 
         add(panel1);
-        add(panel2);
 
         //获取屏幕尺寸
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
