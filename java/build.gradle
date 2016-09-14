@@ -7,3 +7,14 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
+
+task clearJar(type: Delete) {
+    delete 'build/libs/clickutils.jar'
+}
+task makeJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('build/libs/')
+    include('classes.jar')
+    rename('classes.jar', 'clickutils.jar')
+}
+makeJar.dependsOn(clearJar, build)

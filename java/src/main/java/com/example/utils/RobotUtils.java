@@ -22,8 +22,11 @@ import javax.swing.ImageIcon;
  * 自动化测试工具类
  */
 public class RobotUtils {
-    private static RobotUtils robotUtils = new RobotUtils();
+    private static RobotUtils robotUtils;
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+
+    private RobotUtils() {
+    }
 
     public static RobotUtils getInstance() {
         if (robotUtils == null) {
@@ -78,14 +81,19 @@ public class RobotUtils {
      * @param robot
      * @param url   打开应用程序   浏览器
      */
-    public void openApplication(Robot robot, String url) {
+    public int openApplication(Robot robot, String url, int dery) {
+        Process pro = null;
         try {
             Runtime runtime = Runtime.getRuntime();
-            runtime.exec(url);
-            robot.delay(1000 * 3);
+            pro = runtime.exec(url);
+            pro.waitFor();
+            robot.delay(dery);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        return pro.exitValue();
     }
 
 
@@ -108,9 +116,28 @@ public class RobotUtils {
 
     }
 
+
     /**
      * @param robot
-     * @param keys  键盘输入指定键
+     * @param keys
+     * @param dery
+     *      同时按下键盘
+     */
+    public void onKeyTogetherDown(Robot robot, int keys[], int dery) {
+        for (int i = 0; i < keys.length; i++) {
+            robot.keyPress(keys[i]);
+        }
+        robot.delay(100);
+
+        for (int i = 0; i < keys.length; i++) {
+            robot.keyRelease(keys[i]);
+        }
+        robot.delay(dery);
+    }
+
+    /**
+     * @param robot
+     * @param keys  键盘一次输入指定键
      */
     public void doKeyWord(Robot robot, int[] keys, int dery) {
         for (int i = 0; i < keys.length; i++) {
